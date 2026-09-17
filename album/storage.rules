@@ -1,0 +1,29 @@
+rules_version = '2';
+
+service firebase.storage {
+  match /b/{bucket}/o {
+
+    function admin() {
+      return request.auth != null
+        && firestore.get(/databases/(default)/documents/users/$(request.auth.uid)).data.admin == true;
+    }
+
+    match /stickers/{arquivo} {
+      allow read: if true;
+      allow write: if admin()
+                   && request.resource.size < 5 * 1024 * 1024
+                   && request.resource.contentType.matches('image/.*');
+    }
+
+    match /partners/{arquivo} {
+      allow read: if true;
+      allow write: if admin()
+                   && request.resource.size < 5 * 1024 * 1024
+                   && request.resource.contentType.matches('image/.*');
+    }
+
+    match /{caminho=**} {
+      allow read, write: if false;
+    }
+  }
+}

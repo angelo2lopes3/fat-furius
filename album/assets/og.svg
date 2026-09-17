@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#131923"/><stop offset="1" stop-color="#0B0E13"/>
+    </linearGradient>
+    <linearGradient id="foil" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FFD98A"/><stop offset="1" stop-color="#C77B0F"/>
+    </linearGradient>
+    <linearGradient id="xp" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#F0A92E"/><stop offset="1" stop-color="#2FBF71"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <g opacity=".5">
+    <circle cx="1010" cy="150" r="240" fill="#F0A92E" opacity=".10"/>
+  </g>
+  <text x="80" y="238" font-family="Archivo Black, Impact, sans-serif" font-size="62" fill="#E8E2D4">Álbum da Cidade</text>
+  <text x="80" y="288" font-family="Archivo, Helvetica, sans-serif" font-weight="600" font-size="24" fill="#A9A396">Abra pacotes, gire a roleta, complete o álbum.</text>
+  <g transform="translate(80 350)">
+    <rect width="420" height="22" rx="11" fill="#171C25" stroke="#E8E2D4" stroke-opacity=".2" stroke-width="2"/>
+    <rect x="4" y="4" width="290" height="14" rx="7" fill="url(#xp)"/>
+    <text y="62" font-family="Archivo, Helvetica, sans-serif" font-weight="700" font-size="22" fill="#F0A92E">Nível 7 · figurinhas 49 × 65 mm</text>
+  </g>
+  <g transform="translate(790 150)">
+    <g transform="rotate(-14)"><rect width="150" height="199" rx="14" fill="#2A3243" stroke="#E8E2D4" stroke-opacity=".2" stroke-width="3"/></g>
+    <g transform="translate(128 18) rotate(9)">
+      <rect width="150" height="199" rx="14" fill="url(#foil)"/>
+      <path d="M75 52l14 29 32 4-23 23 5 32-28-15-28 15 5-32-23-23 32-4z" fill="#231703" opacity=".75"/>
+    </g>
+  </g>
+</svg>

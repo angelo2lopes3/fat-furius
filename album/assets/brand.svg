@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Marca do Álbum da Cidade">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FFD98A"/><stop offset="1" stop-color="#E29A22"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="#0E1116"/>
+  <rect x="14" y="9" width="36" height="46" rx="6" fill="url(#g)"/>
+  <rect x="19" y="14" width="26" height="26" rx="4" fill="#231703" opacity=".8"/>
+  <path d="M32 18l3.3 6.8 7.4 1-5.4 5.2 1.3 7.4L32 34.9l-6.6 3.5 1.3-7.4-5.4-5.2 7.4-1z" fill="#FFE3A6"/>
+  <rect x="19" y="44" width="18" height="5" rx="2.5" fill="#231703" opacity=".55"/>
+</svg>

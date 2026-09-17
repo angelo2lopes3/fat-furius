@@ -1,0 +1,57 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function logado() {
+      return request.auth != null;
+    }
+
+    function admin() {
+      return logado()
+        && exists(/databases/$(database)/documents/users/$(request.auth.uid))
+        && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.admin == true;
+    }
+
+    // Figurinhas: qualquer usuário logado lê, só admin cria/apaga
+    match /stickers/{id} {
+      allow read: if logado();
+      allow write: if admin();
+    }
+
+    // Parceiros: leitura pública (aparecem como foto), escrita só de admin
+    match /partners/{id} {
+      allow read: if true;
+      allow write: if admin();
+    }
+
+    match /config/{doc} {
+      allow read: if logado();
+      allow write: if admin();
+    }
+
+    // StateID -> conta (usado para entrar pelo StateID e creditar pacotes)
+    match /stateIds/{stateId} {
+      allow read: if true;
+      allow create: if logado() && request.resource.data.uid == request.auth.uid;
+      allow update, delete: if admin();
+    }
+
+    match /users/{uid} {
+      allow read: if logado();
+      allow create: if request.auth.uid == uid
+                    && request.resource.data.admin == false;
+      // o próprio usuário só consegue GASTAR pacotes; creditar é coisa de admin
+      allow update: if admin()
+                    || (request.auth.uid == uid
+                        && request.resource.data.admin == resource.data.admin
+                        && request.resource.data.packs <= resource.data.packs);
+      allow delete: if admin();
+
+      match /album/{stickerId} {
+        allow read: if logado();
+        allow write: if request.auth.uid == uid || admin();
+      }
+    }
+  }
+}
